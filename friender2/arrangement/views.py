@@ -3,15 +3,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
 
+friends = {"Max":[34,'max@mail.ru'],
+           "Grigory":[28,'grigory@mail.ru'],
+           "Anna":[37,'anna@mail.ru'],
+           "Pedro":[23,'pedro@mail.ru'],
+           "Kate":[19,'kate@mail.ru']
+           }
+establishments = ['Butter bro', 'Terra', 'Golden Cafe', 'Pancakes', 'Depo']
 
-#функция представления views
-def current_datetime(request):
-    now = datetime.datetime.now()
-    html = f"<html><body>It is now {now}.</body></html>"
-    return HttpResponse(html)
 
-def greeting(request, name):
-    return HttpResponse(f"<h1>Hello {name}</h1>")
+# функция представления views
+
 
 def site_rules(request):
     return HttpResponse(f"""<h1>Правильно заполните анкету ...
@@ -21,8 +23,25 @@ def site_rules(request):
 Встречайтесь не чаще чем раз в 5 дней ...
 Старайтесь лучше узнать партнера ...
 Уважайте свои границы ...
-Будьте собой</h1>""" )
+Будьте собой</h1>""")
+
 
 def site_info(request):
     return HttpResponse(f'<h1>info not found ;)</h1>')
 
+
+def all_friends(request):
+    context = {
+        "friends": friends,
+
+    }
+    return render(request, 'friends.html', context=context)
+
+def main_page(request):
+    return render(request, 'main.html')
+
+def place_arrangement(request):
+    context = {
+        "establishments": establishments,
+    }
+    return render(request, 'establishments.html', context=context)

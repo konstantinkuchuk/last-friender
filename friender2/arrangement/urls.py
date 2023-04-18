@@ -3,8 +3,9 @@ from .views import *
 
 #маршрутизация
 urlpatterns = [
-    path('time_now/', current_datetime),
-    path('greeting/<str:name>/', greeting),
     path('site_rules/', site_rules),
-    path('site_info/', site_info)
+    path('site_info/', site_info),
+    path('main/', main_page, name='main'),
+    path('friends/', all_friends, name='friends'),
+    path('establishments/', place_arrangement, name='establishments'),
 ]
