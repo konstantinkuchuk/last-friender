@@ -1,14 +1,15 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
+from .models import Users
 import datetime
 
-friends = {"Max":[34,'max@mail.ru'],
-           "Grigory":[28,'grigory@mail.ru'],
-           "Anna":[37,'anna@mail.ru'],
-           "Pedro":[23,'pedro@mail.ru'],
-           "Kate":[19,'kate@mail.ru']
-           }
+# friends = {"Max":[34,'max@mail.ru'],
+#            "Grigory":[28,'grigory@mail.ru'],
+#            "Anna":[37,'anna@mail.ru'],
+#            "Pedro":[23,'pedro@mail.ru'],
+#            "Kate":[19,'kate@mail.ru']
+#            }
 establishments = ['Butter bro', 'Terra', 'Golden Cafe', 'Pancakes', 'Depo']
 
 
@@ -32,7 +33,7 @@ def site_info(request):
 
 def all_friends(request):
     context = {
-        "friends": friends,
+        "friends": Users.objects.all(),
 
     }
     return render(request, 'friends.html', context=context)
@@ -45,3 +46,16 @@ def place_arrangement(request):
         "establishments": establishments,
     }
     return render(request, 'establishments.html', context=context)
+
+
+# def static_url(request):
+#     return render(request, "static_example.html")
+
+def invited_friends(request):
+    return render(request, 'invited_friends.html')
+
+def friends_invitations(request):
+    return render(request, 'friends_invitations.html')
+
+def rating(request):
+    return render(request, 'rating.html')
