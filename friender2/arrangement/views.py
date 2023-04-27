@@ -10,7 +10,7 @@ import datetime
 #            "Pedro":[23,'pedro@mail.ru'],
 #            "Kate":[19,'kate@mail.ru']
 #            }
-establishments = ['Butter bro', 'Terra', 'Golden Cafe', 'Pancakes', 'Depo']
+# establishments = ['Butter bro', 'Terra', 'Golden Cafe', 'Pancakes', 'Depo']
 
 
 # функция представления views
@@ -43,7 +43,8 @@ def main_page(request):
 
 def place_arrangement(request):
     context = {
-        "establishments": establishments,
+        "establishments": User_establishment.objects.all(),
+
     }
     return render(request, 'establishments.html', context=context)
 
