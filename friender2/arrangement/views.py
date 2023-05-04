@@ -1,8 +1,9 @@
 from django.shortcuts import render
 
 from django.http import HttpResponse
-from .models import Users
+from .models import *
 import datetime
+
 
 # friends = {"Max":[34,'max@mail.ru'],
 #            "Grigory":[28,'grigory@mail.ru'],
@@ -38,8 +39,10 @@ def all_friends(request):
     }
     return render(request, 'friends.html', context=context)
 
+
 def main_page(request):
     return render(request, 'main.html')
+
 
 def place_arrangement(request):
     context = {
@@ -55,8 +58,10 @@ def place_arrangement(request):
 def invited_friends(request):
     return render(request, 'invited_friends.html')
 
+
 def friends_invitations(request):
     return render(request, 'friends_invitations.html')
+
 
 def rating(request):
     return render(request, 'rating.html')
