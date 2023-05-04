@@ -8,7 +8,7 @@ urlpatterns = [
     path('main/', main_page, name='main'),
     path('friends/', all_friends, name='friends'),
     path('establishments/', place_arrangement, name='establishments'),
-    path('invited_friends/', invited_friends, name='invited_friends'),
-    path('friends_invitations/', friends_invitations, name='friends_invitations'),
     path('rating/', rating, name='rating'),
+    path('host/', host, name='host'),
+    path('guest/', guest, name='guest'),
 ]

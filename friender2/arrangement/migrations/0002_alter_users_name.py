@@ -17,8 +17,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('address', models.CharField(max_length=100)),
                 ('category', models.CharField(choices=[('1', 'good'),('2','bad')], max_length=1)),
-                ('phone', models.CharField(max_length=100)),
-                ('classification', models.CharField(max_length=100))
+                ('phone', models.CharField(max_length=100))
             ],
         ),
     ]
