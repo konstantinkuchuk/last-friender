@@ -38,8 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'arrangement',
+    'arrangement.apps.ArrangementsConfig',
     'django_extensions',
+    'crispy_forms'
+
 ]
 
 MIDDLEWARE = [

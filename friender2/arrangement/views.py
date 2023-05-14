@@ -1,7 +1,8 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect
+from django.views import View
 from django.http import HttpResponse
 from .models import *
+from  .forms import *
 import datetime
 
 
@@ -58,3 +59,45 @@ def user_rating(request):
 
     }
     return render(request, 'userrating.html', context=context)
+
+def user_form_rating(request, **kwargs):
+    user_id = int(kwargs['id'])
+    context = {}
+    if request.method == "POST":
+        form = RatingUserForm(request.POST)
+        context["form"] = form
+        if form.is_valid():
+            UserRating.objects.create(
+                user_id=user_id,
+                rating=request.POST['rating'],
+                description=request.POST['description'],
+            )
+            return redirect("user_rating")
+    else:
+        form = RatingUserForm()
+        context["form"] = form
+
+    # context = {
+    #     # "user": Users.objects.get(id=user_id)
+    #     "form": form
+    #
+    # }
+    return render(request, 'user_form_rating.html', context=context)
+
+def create_user(request):
+    context = {}
+    if request.method == "POST":
+        form = RatingUserForm(request.POST)
+        context["form"] = form
+        if form.is_valid():
+            return redirect("user_rating")
+    else:
+        form = CreateUserForm()
+        context["form"] = form
+
+    # context = {
+    #     # "user": Users.objects.get(id=user_id)
+    #     "form": form
+    #
+    # }
+    return render(request, 'create_user_form.html', context=context)

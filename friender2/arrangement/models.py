@@ -19,25 +19,16 @@ HOBBIES = [
 
 
 class Users(models.Model):
-    name = models.CharField(max_length=200)
-    surname = models.CharField(max_length=100)
-    age = models.IntegerField()
-    sex = models.CharField(max_length=1, choices=SEX)
-    email = models.EmailField(null=True)
-    city = models.CharField(max_length=100, default='Minsk')
+    name = models.CharField(max_length=200, verbose_name='имя')
+    surname = models.CharField(max_length=100, verbose_name='фамилия')
+    age = models.IntegerField(verbose_name='возраст')
+    sex = models.CharField(max_length=1, choices=SEX, verbose_name='пол')
+    email = models.EmailField(null=True, verbose_name='почта')
+    city = models.CharField(max_length=100, default='Minsk', verbose_name='город')
 
     # hobby = models.ManyToManyField("Hobbies", )
     class Meta:
-        indexes = [
-            models.Index(fields=["age", "name"]),
-            models.Index(fields=["name"]),
-            models.Index(fields=["-name"]),
-            models.Index(fields=["age"]),
-            models.Index(fields=["-age"]),
-            models.Index(fields=["name", "-sex"]),
-            # models.Index(fields=["age", "sex"]),
-        ]
-
+        verbose_name_plural = 'Пользователи'
     def __str__(self):
         return self.name
 
@@ -47,6 +38,8 @@ class Host(Users):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name_plural = 'Приглашающие'
 
 
 class Guest(Users):
@@ -54,6 +47,8 @@ class Guest(Users):
 
     def __str__(self):
         return self.name
+    class Meta:
+        verbose_name_plural = 'Гости'
 
 
 class Passport(models.Model):
@@ -115,3 +110,5 @@ class UserRating(Rating):
 
     def __str__(self):
         return str(self.rating)
+
+
