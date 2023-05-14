@@ -12,7 +12,9 @@
       <th scope="col">age</th>
          <th scope="col">sex</th>
       <th scope="col">email</th>
-        <th scope="col">sity</th>
+        <th scope="col">city</th>
+        <th scope="col">hobbies</th>
+        <th scope="col">ratings</th>
     </tr>
   </thead>
   <tbody>
@@ -27,8 +29,18 @@
         {% if friend.email%}
             <td>{{ friend.email }}</td>
         {% else %}
-            <td>Email not found</td>
+            <td></td>
         {% endif %}
+        <td>
+            {% for hobby in friend.hobbies_set.all %}
+            {{hobby}},
+            {% endfor %}
+        </td>
+        <td>
+            {% for rating in friend.userrating_set.all %}
+            {{rating}},
+            {% endfor %}
+        </td>
 
 
 
