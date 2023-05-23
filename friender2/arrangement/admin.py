@@ -2,6 +2,8 @@ from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
 
+
+
 class UserRatingInline(admin.TabularInline):
     model = UserRating
     extra = 2
@@ -51,3 +53,5 @@ admin.site.register(Host)
 admin.site.register(Guest)
 
 # Register your models here.
+
+

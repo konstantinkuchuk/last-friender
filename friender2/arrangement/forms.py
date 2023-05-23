@@ -1,6 +1,6 @@
 from django import forms
 from django.core.validators import *
-from .models import Users
+from .models import *
 
 class RatingUserForm(forms.Form):
     rating = forms.IntegerField(
@@ -15,4 +15,10 @@ class RatingUserForm(forms.Form):
 class CreateUserForm(forms.ModelForm):
     class Meta:
         model = Users
-        exclude = ('email',)
+        exclude = ('email',)  #то, что не нужно
+        # fields = "__all__"  #все выводится
+
+# class EstablishmentCreateForm(forms.ModelForm):
+#     class Meta:
+#         model = User_establishment
+#         fields = ('name', 'address', 'category', 'phone')

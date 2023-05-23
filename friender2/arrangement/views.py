@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from django.http import HttpResponse
 from .models import *
-from  .forms import *
+from .forms import *
+from django.views.generic.edit import CreateView
 import datetime
 
 
@@ -101,3 +102,12 @@ def create_user(request):
     #
     # }
     return render(request, 'create_user_form.html', context=context)
+
+class MyView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Hello world')
+
+# class EstablishmentsCreateView(CreateView):
+#     template_name = 'createplace.html'
+#     model = User_establishment
+#     fields = ['name', 'address', 'category', 'phone']

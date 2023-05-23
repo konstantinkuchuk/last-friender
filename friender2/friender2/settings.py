@@ -40,9 +40,14 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'arrangement.apps.ArrangementsConfig',
     'django_extensions',
-    'crispy_forms'
+    'crispy_forms',
+    # 'crispy_bootstrap5',
+    'rest_framework',
+    'friender_api.apps.FrienderApiConfig',
 
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

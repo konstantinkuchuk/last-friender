@@ -9,4 +9,7 @@ urlpatterns = [
     path('user_rating/', user_rating, name='user_rating'),
     re_path(r"^rating_user/(?P<id>[0-9]+)$", user_form_rating, name="user_from_rating"),
     path('create_user/', create_user, name='create_user'),
+    path('class view/', MyView.as_view()),
+    # path('create_place/', EstablishmentsCreateView.as_view()),
+
 ]
