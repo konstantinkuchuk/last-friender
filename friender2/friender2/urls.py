@@ -25,7 +25,7 @@ urlpatterns = [
     path('arrangement/', include("arrangement.urls")),
     path('api/', include("friender_api.urls")),
     path('__debug__/', include('debug_toolbar.urls')),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
 
 ]
 

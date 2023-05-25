@@ -5,15 +5,13 @@ from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView
 import datetime
+from django.contrib.auth.models import Permission
+from django.contrib.auth.decorators import login_required
 
 
-# friends = {"Max":[34,'max@mail.ru'],
-#            "Grigory":[28,'grigory@mail.ru'],
-#            "Anna":[37,'anna@mail.ru'],
-#            "Pedro":[23,'pedro@mail.ru'],
-#            "Kate":[19,'kate@mail.ru']
-#            }
-# establishments = ['Butter bro', 'Terra', 'Golden Cafe', 'Pancakes', 'Depo']
+@login_required(login_url="/admin/login/")
+def main_page(request):
+    return render(request, 'main.html')
 
 
 # функция представления views
@@ -61,6 +59,7 @@ def user_rating(request):
     }
     return render(request, 'userrating.html', context=context)
 
+
 def user_form_rating(request, **kwargs):
     user_id = int(kwargs['id'])
     context = {}
@@ -85,6 +84,7 @@ def user_form_rating(request, **kwargs):
     # }
     return render(request, 'user_form_rating.html', context=context)
 
+
 def create_user(request):
     context = {}
     if request.method == "POST":
@@ -102,6 +102,7 @@ def create_user(request):
     #
     # }
     return render(request, 'create_user_form.html', context=context)
+
 
 class MyView(View):
     def get(self, request, *args, **kwargs):
