@@ -95,6 +95,7 @@ def create_user(request):
     else:
         form = CreateUserForm()
         context["form"] = form
+    # return redirect("main")
 
     # context = {
     #     # "user": Users.objects.get(id=user_id)
